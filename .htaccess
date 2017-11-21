@@ -1,8 +1,7 @@
 ## HTTPS ##
-## UNCOMMENT FOR PRODUCTION
-#RewriteEngine On 
-#RewriteCond %{HTTPS} !=on
-#RewriteRule ^/?(.*) https://%{HTTP_HOST}/$1 [R,L]
+RewriteEngine On 
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*) https://%{HTTP_HOST}/$1 [R,L]
 
 ## COMPRESSION ##
 <IfModule mod_deflate.c>

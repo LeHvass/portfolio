@@ -1,3 +1,5 @@
+/*global $, document, window, location, wow, WOW */
+
 $(document).ready(function () {
 
     // SCROLL CLASS CHANGE
@@ -19,7 +21,7 @@ $(document).ready(function () {
 
     $(function () {
         $('a[href*="#"]:not([href="#"])').click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                 if (target.length) {
@@ -35,22 +37,34 @@ $(document).ready(function () {
     // WOW
 
     wow = new WOW({
-        boxClass: 'wow', // default
-        animateClass: 'animated', // default
-        offset: 15, // 0
-        mobile: true, // default
-        live: false // true
+        boxClass: 'wow',
+        animateClass: 'animated',
+        offset: 100,
+        mobile: true,
+        live: false
     });
     wow.init();
 
     // PARALLAX
 
-    $.fn.parallax = function (strength) {
-        var scroll_top = $(window).scrollTop();
-        var move_value = Math.round(scroll_top * strength);
-        this.css('background-position', '0 -' + move_value + 'px');
+    $.fn.parallax = function () {
+        var scroll_top = $(window).scrollTop(),
+            move_value = Math.round(scroll_top * 0.5),
+            scroll_value = (scroll_top / 500).toFixed(2),
+            opacity = 1 - scroll_value,
+            scale = 1 - scroll_value / 10;
+        this.css('transform', 'translate3d(' + 0 + 'px, ' + move_value + 'px, 0)');
+        $(".jumbotron").css({
+            'opacity': opacity,
+            'transform': 'scale(' + scale + ')'
+        });
     };
+
     $(window).on('scroll', function () {
-        $('section#top').parallax(0.5);
+        $('section#top').parallax();
     });
+
+    $('section#top').parallax();
+
+
 });
