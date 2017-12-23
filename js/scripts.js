@@ -6,11 +6,13 @@ $(document).ready(function () {
     var nav = document.getElementById("nav");
 
     window.onscroll = function myFunction() {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        var distanceToTop = document.documentElement.scrollTop;
+        
+        if (distanceToTop > 100 && nav.classList.contains("nav-big")) {
             nav.classList.add("nav-small");
             nav.classList.add("bg-dark");
             nav.classList.remove("nav-big");
-        } else {
+        } else if (distanceToTop < 100 & nav.classList.contains("nav-small")) {
             nav.classList.add("nav-big");
             nav.classList.remove("nav-small");
             nav.classList.remove("bg-dark");
@@ -47,7 +49,7 @@ $(document).ready(function () {
 
     // PARALLAX
 
-    $.fn.parallax = function () {
+    /*$.fn.parallax = function () {
         var scroll_top = $(window).scrollTop(),
             move_value = Math.round(scroll_top * 0.5),
             scroll_value = (scroll_top / 500).toFixed(2),
@@ -64,7 +66,7 @@ $(document).ready(function () {
         $('section#top').parallax();
     });
 
-    $('section#top').parallax();
+    $('section#top').parallax();*/
 
 
 });
