@@ -42,38 +42,6 @@ section#top {
     }
 }
 
-section#about::after,
-section#projects::after,
-section#contact::before,
-footer::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    left: 0;
-    height: 100px;
-    transform: skewY(-2deg);
-    top: -40px;
-    z-index: 0;
-}
-
-section#about::after,
-section#contact::before {
-    background: $color-tertiary;
-}
-
-section#projects::after {
-    background: white;
-}
-
-footer::after {
-    background: #343a40;
-    height: 70px;
-}
-
-/*section#about {
-    top: -40px;
-}*/
-
 section#projects {
     background-color: white;
 }
@@ -216,10 +184,7 @@ nav.nav-small {
     box-shadow: 0 0px 4px hsla(0, 0%, 0%, 0.4);
 }
 
-
-
-nav ul:hover li:not(:hover),
-.navbar-brand:hover ~ div.links ul li {
+nav ul:hover li:not(:hover) {
     opacity: .5;
 }
 
@@ -230,7 +195,7 @@ section#top {
     align-items: center;
     justify-content: center;
     min-height: 600px;
-    height: calc(100vh + 125px);
+    height: 100vh;
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
     .jumbotron {
